@@ -27,12 +27,18 @@ class ToDoDetails extends Component {
         console.log(err);
       });
   };
-  handleDelete = async (e) => {
-    e.preventDefault();
-    
- await service.toDoDelete(this.state._id)
-      console.log("deleted");
-  };
+  deleteToDo = () => {
+    const { params } = this.props.match;
+    axios.delete(`http://localhost:4000/api/v1/todos/${params.id}`)
+    .then( () =>{
+        this.props.history.push('/');
+
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+  }
+  
   
   componentDidMount() {
     this.getToDo();
@@ -51,16 +57,14 @@ class ToDoDetails extends Component {
             </i>
           </p>
           
-          <div className="pt-3">
-                    <button onSubmit={(e) => this.handleDelete(e)} className="btn btn-primary ">
-                      delete
-                    </button>
-                  </div>
+          
           </form> 
           <div className="text-center">
           <Link to="/"><button className="btn btn-primary">Back to To Do's</button></Link>
           </div> 
-
+          <div className="pt-3">
+          <button className ="btn btn-primary" onClick={() => this.deleteToDo()}>Delete ToDo</button>
+</div>
       </div>
     );
   }

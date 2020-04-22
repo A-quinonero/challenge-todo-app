@@ -33,7 +33,7 @@ class AllToDo extends Component {
           {this.state.listOfToDo.map((toDo) => {
             return (
               <div className="">
-                <Link to={`/${toDo._id}`}>
+                
                   <div className="text-noticeboard">
                     <h4 className="text-dark ml-2">{toDo.title}</h4>
                     <h4 className="text-dark ml-2">{toDo.body}</h4>
@@ -44,11 +44,15 @@ class AllToDo extends Component {
                   Edit
                 </button>
               </Link></div>
+              
                   </div>
+                  
                  
-                </Link>
+                <div className ="pt-3">
+                <Link to ={`/${toDo._id}`}>
+                <button className ="btn btn-primary">See Details</button></Link>
                 {/* <p style={{maxWidth: '400px'}} >{event.description} </p> */}
-              </div>
+              </div></div>
             );
           })}
         </div>

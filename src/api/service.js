@@ -19,11 +19,7 @@ export default {
     .then(res => res.data)
     .catch(errorHandler)
 },
-toDoDelete(toDoDelete){
-    return service.delete("/todos", toDoDelete)
-    .then(res => res.data)
-    .catch(errorHandler)
-}
+
 
 
 };
